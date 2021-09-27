@@ -39,6 +39,7 @@ module.exports = {
     // "react/prop-types": 0,
     // "jsx-a11y/no-noninteractive-element-interactions": 0,
     // 추가적인 사항들은 문서 상단 링크 참고!
+    // 'react/destructuring-assignment': [<enabled />, 'never']
   },
   settings: {
     'import/resolver': {

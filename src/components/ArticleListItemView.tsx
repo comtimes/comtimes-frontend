@@ -1,18 +1,14 @@
 import React from 'react';
+import Article from '../model/Article';
 
 interface ArticleListItemViewProps {
-  title: string;
-  subtitle: string;
-  publishDate: Date;
-  // todo: 일단은 string으로 타입 하는데, 나중엔 User 클래스로 처리해야 함
-  author: string;
-  summary: string;
-  thumbnail: string;
+  article: Article;
 }
 
 function ArticleListItemView(props: ArticleListItemViewProps): React.ReactNode {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { title, subtitle, publishDate, author, summary, thumbnail } = props;
+  // eslint-disable-next-line react/destructuring-assignment
+  const { title, publishDate, author } = props.article;
   return (
     <div>
       {/* 아래 부분 '섹션'에 대한 정보가 나와야 하나, 아직 백엔드와 해당 데이터에 대한 고민을 하지 못해 일단 비워놓음  */}

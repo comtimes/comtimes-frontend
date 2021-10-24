@@ -1,4 +1,6 @@
 /* eslint-disable no-useless-constructor */
+import ObjectUtil from "./ObjectUtil";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default class Article {
   constructor(
@@ -13,4 +15,9 @@ export default class Article {
     public views: number
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   ) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static createFromObj(obj: any): Article {
+      return ObjectUtil.createInstanceFromObject<Article>(this, obj);
+  }
 }

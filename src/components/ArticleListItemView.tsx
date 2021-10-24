@@ -16,7 +16,8 @@ function ArticleListItemView(props: ArticleListItemViewProps): ReactElement {
       <div className="title"> {title} </div>
       <div className="author">{author}</div>
       {/* todo: 아래 발행일자 부분 일단은 toString() 처리하고 넘어가는데, 나중엔 DateUtil 만들어서 함수 만들어야 함 */}
-      <div className="publish_date">{publishDate.toString()}</div>
+      {/* todo: postman 결과가 publishDate 객체가 아닌 created_at 문자열로 나오는 것 같다 -> 수정해야할 듯 */}
+      {/* <div className="publish_date">{publishDate.toString()}</div> */}
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import React from 'react';
+import { ReactElement } from 'react';
 import Article from '../model/Article';
 
 interface ArticleListItemViewProps {
   article: Article;
 }
 
-function ArticleListItemView(props: ArticleListItemViewProps): React.ReactNode {
+function ArticleListItemView(props: ArticleListItemViewProps): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // eslint-disable-next-line react/destructuring-assignment
   const { title, publishDate, author } = props.article;

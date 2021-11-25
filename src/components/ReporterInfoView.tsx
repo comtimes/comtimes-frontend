@@ -1,22 +1,18 @@
 import { ReactElement } from "react";
+import ReporterInfo from "model/ReporterInfo";
 import { ReporterPosition } from "../model/ReporterPosition";
 
 interface ReporterInfoViewProps {
-    name: string;
-    position: ReporterPosition;
-    // eslint-disable-next-line react/require-default-props
-    nameWithPosition?: string;
-    email: string;
+    reporterInfo: ReporterInfo;
 };
 
 function ReporterInfoView(props: ReporterInfoViewProps): ReactElement {
     // eslint-disable-next-line react/destructuring-assignment
-    const nameWithPositionStr : string = props.nameWithPosition || `${props.name} ${ReporterPosition.getStr(props.position)}`;
+    const {name, email, position, nameWithPosition} = props.reporterInfo;
+    const nameWithPositionStr : string = nameWithPosition || `${name} ${ReporterPosition.getStr(position)}`;
 
     return <div>
-        <span>{nameWithPositionStr}</span>
-        { /* eslint-disable-next-line react/destructuring-assignment */}
-        <span>({props.email})</span>
+        <span>{nameWithPositionStr}</span> <span>({email})</span>
     </div>;
 }
 

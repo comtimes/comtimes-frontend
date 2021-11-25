@@ -7,7 +7,7 @@ export default class ReporterInfo {
         public readonly name: string,
         public readonly email: string,
         public readonly position: ReporterPosition,
-        public readonly nameWidthPosition?: string
+        public readonly nameWithPosition?: string
     ) {}
 
     public static createFromObj(obj: any): ReporterInfo {

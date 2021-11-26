@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ReporterInfo from "model/ReporterInfo";
+import ReporterInfo from "../model/ReporterInfo";
 import { ReporterPosition } from "../model/ReporterPosition";
 
 interface ReporterInfoViewProps {
@@ -11,9 +11,9 @@ function ReporterInfoView(props: ReporterInfoViewProps): ReactElement {
     const {name, email, position, nameWithPosition} = props.reporterInfo;
     const nameWithPositionStr : string = nameWithPosition || `${name} ${ReporterPosition.getStr(position)}`;
 
-    return <div>
+    return <>
         <span>{nameWithPositionStr}</span> <span>({email})</span>
-    </div>;
+    </>;
 }
 
 export default ReporterInfoView;

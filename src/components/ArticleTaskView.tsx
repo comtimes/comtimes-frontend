@@ -13,11 +13,10 @@ interface ArticleTaskViewProps {
 function AricleTaskView(props: ArticleTaskViewProps): ReactElement {
     // eslint-disable-next-line react/jsx-no-comment-textnodes
     const {articleTask, reporterInfo} = props;
-    return <>
+    return <div>
         {/* // eslint-disable-next-line react/destructuring-assignment */}
-        {`${ArticleTask.getStr(articleTask)} : `}
-        <ReporterInfoView reporterInfo={reporterInfo} />
-    </>
+        {`${ArticleTask.getStr(articleTask)} : `} <ReporterInfoView reporterInfo={reporterInfo} />
+    </div>
 }
 
 export default AricleTaskView;

@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
-import ReporterInfo from "../model/ReporterInfo";
-import { ReporterPosition } from "../model/ReporterPosition";
+import { ReactElement } from 'react';
+import ReporterInfo from '../model/ReporterInfo';
+import { ReporterPosition } from '../model/ReporterPosition';
 
 interface ReporterInfoViewProps {
     reporterInfo: ReporterInfo;

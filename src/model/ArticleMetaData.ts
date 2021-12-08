@@ -1,4 +1,4 @@
-import ReporterInfo from "./ReporterInfo"
+import ReporterInfo from './ReporterInfo'
 
 type ArticleEditorMetaData = {
     'MEDIA_MANAGER': ReporterInfo;

@@ -40,6 +40,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://54.180.87.17:8080",
   "devDependencies": {
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.20",

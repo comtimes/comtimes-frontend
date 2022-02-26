@@ -9,7 +9,7 @@ export default class Article {
     public subtitle: string,
     public publishDate: Date,
     public author: string, // todo: 일단은 string으로 타입 하는데, 나중엔 User 클래스로 처리해야 함
-    public summary: string,
+    public content: string,
     public thumbnail: string,
     public likes: number,
     public views: number

@@ -19,11 +19,11 @@ export default class Pagination {
         return Math.ceil(Pagination.SHOWN_BUTTON_COUNT / 2);
     }
 
-    private hasPrevPages(): boolean {
+    public hasPrevPages(): boolean {
         return this.currentPage > Pagination.getHalfNumber();
     }
 
-    private hasNextPages(): boolean {
+    public hasNextPages(): boolean {
         return this.currentPage + Pagination.getHalfNumber() <= this.totalPageCnt;
     }
 

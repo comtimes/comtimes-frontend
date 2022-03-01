@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactElement } from 'react';
 import axios from 'axios';
+import ApiUtil from '../util/ApiUtil';
 import Article from '../model/Article';
 import ArticleListItemView from './ArticleListItemView';
 
@@ -16,15 +17,28 @@ export default function ArticleListView(): ReactElement {
                 setLoading(true);
 
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const response: any = await axios.get('https://37122e49-1e60-4770-b836-4d0b7c9ab008.mock.pstmn.io/api/news?start_idx=0&end_idx=9&order=1');
+                const response: any = await axios.get(ApiUtil.getPageListUrl(0));
+                const articleObjs = Array.from(response.data.data.content);
                 
                 setArticles(
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    response.data.data.map((obj: any) => Article.createFromObj(obj))
-                );
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    articleObjs.map((obj: any) => {
+                        const { id, postTitle, postImage, postHtml, author, viewCount } = obj;
+                        return Article.createFromObj({
+                            id,
+                            title: postTitle,
+                            author: author.name,
+                            content: postHtml,
+                            thumbnail: postImage,
+                            likes: 0,
+                            views: viewCount
+                        });
+                    })
+                );            
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (e: any) {
                 setError(e);
+                console.error(e);
             }
 
             setLoading(false);
@@ -37,7 +51,11 @@ export default function ArticleListView(): ReactElement {
     if (error) return <div>에러가 발생했습니다</div>;
     if (!articles) return <>null</>;
 
-    return <>{
-        articles.map((article: Article) => <ArticleListItemView key={article.id} article={article} />)
-    }</>;
+    return (
+        <div className="wrapper" style={{ position: 'relative', margin: '0 auto', padding: '50px 100px 150px 100px', maxWidth: '1000px' }}>
+            {articles.map((article: Article) => (
+                <ArticleListItemView key={article.id} article={article} />
+            ))}
+        </div>
+    );
 }

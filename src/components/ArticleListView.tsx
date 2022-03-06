@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-undef-init */
 /* eslint-disable no-shadow */
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect, ReactElement, useRef, MutableRefObject } from 'react';
 import axios from 'axios';
 import Pagination from '../model/Pagination';
 import ApiUtil from '../util/ApiUtil';
@@ -12,12 +12,11 @@ import PaginationView from './PaginationView';
 
 export default function ArticleListView(): ReactElement {
     const [page, setPage] = useState<number>(1);
-    const [pagination, setPagination] = useState<Pagination>(); // SJW # 2
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    // let pagi: Pagination | undefined = undefined; // SJW # 1
+    const pagi: MutableRefObject<Pagination | undefined> = useRef<Pagination>();
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -28,7 +27,7 @@ export default function ArticleListView(): ReactElement {
 
                 const response: any = await axios.get(ApiUtil.getPageListUrl(page - 1));
 
-                setPagination(new Pagination(page, response.data.data.totalPages, response.data.data.totalElements, response.data.data.size));
+                pagi.current = new Pagination(page, response.data.data.totalPages, response.data.data.totalElements, response.data.data.size);
 
                 const articleObjs = Array.from(response.data.data.content);
                 setArticles(
@@ -63,7 +62,7 @@ export default function ArticleListView(): ReactElement {
             {articles.map((article: Article) => (
                 <ArticleListItemView key={article.id} article={article} />
             ))}
-            <PaginationView pagination={pagination} onClick={page => setPage(page)} />
+            <PaginationView pagination={pagi.current} onClick={page => setPage(page)} />
         </div>
     );
 }

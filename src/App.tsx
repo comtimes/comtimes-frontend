@@ -1,10 +1,15 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 import ArticleListView from 'components/ArticleListView';
+import { Route, Routes } from 'react-router';
 
 function App() {
-    return <div className='App'>
-      <ArticleListView />
-    </div>
-}
+  return <div className='App'>
+        <Routes>
+          <Route path='/' element={<ArticleListView />} />
+          <Route path='/post' element={<ArticleListView />} />
+        </Routes>
+      </div>
+  }
 
 export default App;
